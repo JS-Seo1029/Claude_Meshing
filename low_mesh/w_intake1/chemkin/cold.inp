@@ -1,0 +1,17 @@
+ELEMENTS
+
+C H O N
+
+END
+
+SPECIES
+
+H2 O2 N2
+
+END
+
+REACTIONS
+
+O2 = O2                              1.0E+13  0.00 -1.0E+03
+
+END

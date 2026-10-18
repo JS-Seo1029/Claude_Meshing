@@ -1,0 +1,125 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoReactingBuoyantFoam_log;
+
+startFrom       latestTime;
+
+startTime       0;
+
+//stopAt          noWriteNow;
+stopAt          endTime;
+
+endTime         1.0; // 10.0; //45000; //40000;
+
+deltaT          1.0e-5; //1e-5; //5e-6; //1e-5; //2.5e-5;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.1; //0.01; //500;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+adjustTimeStep  yes;
+
+maxCo		0.8;
+
+runTimeModifiable true;
+
+functions
+{
+//include "fieldAverage"
+//include "turbulenceFields"
+//include "resolvedTKE"
+//include "subgridTKE"
+//include "totalTKE"
+//include "TKEratio"
+/*
+    probes
+    {
+        type                probes;
+        functionObjectLibs  ("libfieldFunctionObjects.so");
+        enabled             true;
+        writeControl        timeStep;
+        writeInterval       1;
+        executeControl      timeStep;
+        executeInterval     1;
+        log                 true;
+        fields              ( p U );
+        probeLocations
+        (
+            (0.0 0.0 0.399)
+	    (0.0 0.003925 0.0)
+	    (0.0 0.0075 -0.045)
+        );
+    }
+*/
+
+    probes
+    {
+        type                probes;
+        functionObjectLibs  ("libfieldFunctionObjects.so");
+        enabled             true;
+        writeControl        timeStep;
+        writeInterval       10;
+        executeControl      timeStep;
+        executeInterval     10;
+        log                 true;
+        fields              ( NH3 CO NO NO2 T );
+        probeLocations
+        (
+            (0.0 0.0 0.399)
+            (0.0 0.0 0.14)
+        );
+    }
+
+/* 
+   Co1
+    {
+        type            CourantNo;
+        libs            ("libfieldFunctionObjects.so");
+
+        field           phi;
+
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+*/
+
+
+    yPlus1
+    {
+        type            yPlus;
+        libs            ("libfieldFunctionObjects.so");
+
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+}
+
+// ************************************************************************* //

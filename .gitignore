@@ -1,0 +1,11 @@
+# OpenFOAM 메쉬 생성 결과물 (다시 생성 가능)
+**/constant/polyMesh/*
+!**/constant/polyMesh/blockMeshDict
+
+# 병렬 계산 분할 폴더, 후처리 결과
+processor*/
+postProcessing/
+
+# 로그
+log.*
+*.log

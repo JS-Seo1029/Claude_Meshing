@@ -1,0 +1,18 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeatureExtractDict;
+}
+top.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs
+    {
+        includedAngle   150;
+        geometricTestOnly no;     // region boundaries (e.g. riser rim) are features too
+    }
+    subsetFeatures { nonManifoldEdges no; openEdges yes; }
+    writeObj        no;
+}

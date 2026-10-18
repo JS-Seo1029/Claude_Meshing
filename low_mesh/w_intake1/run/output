@@ -1,0 +1,29 @@
+couldn't read file "/usr/share/Modules/libexec/modulecmd.tcl": no such file or directory
+[17] #0  Foam::error::printStack(Foam::Ostream&) at ??:?
+[17] #1  Foam::sigFpe::sigHandler(int) at ??:?
+[17] #2  ? in "/lib64/libc.so.6"
+[17] #3  Foam::GAMGSolver::scale(Foam::Field<double>&, Foam::Field<double>&, Foam::lduMatrix const&, Foam::FieldField<Foam::Field, double> const&, Foam::UPtrList<Foam::lduInterfaceField const> const&, Foam::Field<double> const&, unsigned char) const at ??:?
+[17] #4  Foam::GAMGSolver::Vcycle(Foam::PtrList<Foam::lduMatrix::smoother> const&, Foam::Field<double>&, Foam::Field<double> const&, Foam::Field<double>&, Foam::Field<double>&, Foam::Field<double>&, Foam::Field<double>&, Foam::Field<double>&, Foam::PtrList<Foam::Field<double> >&, Foam::PtrList<Foam::Field<double> >&, unsigned char) const at ??:?
+[17] #5  Foam::GAMGSolver::solve(Foam::Field<double>&, Foam::Field<double> const&, unsigned char) const at ??:?
+[17] #6  Foam::fvMatrix<double>::solveSegregated(Foam::dictionary const&) at ??:?
+[17] #7  Foam::fvMatrix<double>::solve(Foam::dictionary const&) at ??:?
+[17] #8  ? at ??:?
+[17] #9  __libc_start_main in "/lib64/libc.so.6"
+[17] #10  ? at ??:?
+[node001:3005191:0:3005191] Caught signal 8 (Floating point exception: tkill(2) or tgkill(2))
+==== backtrace (tid:3005191) ====
+ 0  /usr/lib64/libucs.so.0(ucs_handle_error+0x2a4) [0x1555498492a4]
+ 1  /usr/lib64/libucs.so.0(+0x2347c) [0x15554984947c]
+ 2  /usr/lib64/libucs.so.0(+0x2372a) [0x15554984972a]
+ 3  /lib64/libc.so.6(+0x37400) [0x15554d37a400]
+ 4  /lib64/libc.so.6(gsignal+0x10f) [0x15554d37a37f]
+ 5  /lib64/libc.so.6(+0x37400) [0x15554d37a400]
+ 6  /home/kjung/OpenFOAM/OpenFOAM-6/platforms/linux64GccDPInt64Opt/lib/libOpenFOAM.so(_ZNK4Foam10GAMGSolver5scaleERNS_5FieldIdEES3_RKNS_9lduMatrixERKNS_10FieldFieldIS1_dEERKNS_8UPtrListIKNS_17lduInterfaceFieldEEERKS2_h+0xd7) [0x15554e7558e7]
+ 7  /home/kjung/OpenFOAM/OpenFOAM-6/platforms/linux64GccDPInt64Opt/lib/libOpenFOAM.so(_ZNK4Foam10GAMGSolver6VcycleERKNS_7PtrListINS_9lduMatrix8smootherEEERNS_5FieldIdEERKS8_S9_S9_S9_S9_S9_RNS1_IS8_EESD_h+0xf92) [0x15554e758762]
+ 8  /home/kjung/OpenFOAM/OpenFOAM-6/platforms/linux64GccDPInt64Opt/lib/libOpenFOAM.so(_ZNK4Foam10GAMGSolver5solveERNS_5FieldIdEERKS2_h+0x550) [0x15554e75a330]
+ 9  /home/kjung/OpenFOAM/OpenFOAM-6/platforms/linux64GccDPInt64Opt/lib/libfiniteVolume.so(_ZN4Foam8fvMatrixIdE15solveSegregatedERKNS_10dictionaryE+0x175) [0x1555545e43d5]
+10  rhoReactingFoam(_ZN4Foam8fvMatrixIdE5solveERKNS_10dictionaryE+0x147) [0x494b07]
+11  rhoReactingFoam() [0x437012]
+12  /lib64/libc.so.6(__libc_start_main+0xf3) [0x15554d366493]
+13  rhoReactingFoam() [0x439cde]
+=================================
